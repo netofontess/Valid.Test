@@ -1,0 +1,119 @@
+# Visual Studio
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Auto-generated files (backup, debugging, etc.)
+*.rsuser
+*.rsprime
+*.pidb
+*.booproj
+*.sln
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folders for open-source projects
+$RECYCLE.BIN/
+
+# Folder config file
+.DS_Store
+
+# Log files
+*.log
+*.tlog
+
+# Build Folders (you can clean or rebuild these at any time)
+bin/
+obj/
+Debug/
+Release/
+publish/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Mac
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+
+# Icon must end with two \r\n
+Icon?
+
+# Thumbnails
+._*
+
+# Files that might appear when mounting a volume
+.Spotlight-V100
+.Trashes
+
+# Compiled Source
+*.dll
+*.exe
+*.dll.config
+*.exe.config
+*.out
+
+# Packages
+*.nupkg
+# Exclude NuGet Packages
+!packages/build/
+
+# Backup & Report files from converting an old project file to a newer
+# format, or upgrading a package
+*.Backup
+*.UpgradeLog.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Rider (JetBrains IDE)
+.idea/
+*.sln.iml
+*.iws
+
+# DotNetCore watch (optional, you can add if using dotnet watch)
+**/coverage/
+coverage/
+watch.json
+
+# Exclude config files that contain environment-specific settings
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+appsettings.Test.json
+appsettings.Staging.json
+
+# Local toolset files (optional)
+*.dotnet-tools.json
+
+# Local history folder in VS Code
+.history/
+
+# Rider IDE directories
+.idea/
+.idea_modules/
+*.sln.ide/ 
