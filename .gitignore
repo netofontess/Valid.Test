@@ -12,7 +12,6 @@
 *.rsprime
 *.pidb
 *.booproj
-*.sln
 
 # Windows image file caches
 Thumbs.db
