@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Valid.Test.Application.Commands;
+using Valid.Test.Application.UseCases.ProtocoloCase.Create;
 
 namespace Valid.Test.Application.Validators
 {

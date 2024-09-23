@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Solicita o hostname ao usuário
 read -p "Informe o hostname (ex: https://localhost:7076): " hostname
 
-# Solicita o diretório onde as imagens estão armazenadas
 read -p "Informe o caminho do diretório onde as imagens estão armazenadas (sem barra no final): " image_dir
 
-# Array com os dados para cada requisição cURL (sem o caminho da imagem)
+read -p "Digite o token de autenticação: " jwt_token
+
 declare -a curl_requests=(
 	'NumeroProtocolo=10001&NumeroVia=1&Cpf=11111111111&Rg=1234567&Nome=João Silva&NomeMae=Maria Silva&NomePai=José Silva&Foto=imagem1.jpg'
 	'NumeroProtocolo=10002&NumeroVia=1&Cpf=22222222222&Rg=2345678&Nome=Ana Souza&NomeMae=Clara Souza&NomePai=Marcos Souza&Foto=imagem2.jpg'
@@ -20,10 +19,8 @@ declare -a curl_requests=(
 	'NumeroProtocolo=10010&NumeroVia=1&Cpf=00000000000&Rg=0123456&Nome=Paulo Oliveira&NomeMae=Isabel Oliveira&NomePai=Rodrigo Oliveira&Foto=imagem10.jpg'
 )
 
-# Loop para realizar cada requisição cURL
 for i in "${!curl_requests[@]}"
 do
-  # Extrai os campos do array (sem a imagem)
   protocolo=$(echo "${curl_requests[$i]}" | awk -F"&" '{print $1}')
   via=$(echo "${curl_requests[$i]}" | awk -F"&" '{print $2}')
   cpf=$(echo "${curl_requests[$i]}" | awk -F"&" '{print $3}')
@@ -32,15 +29,13 @@ do
   nome_mae=$(echo "${curl_requests[$i]}" | awk -F"&" '{print $6}')
   nome_pai=$(echo "${curl_requests[$i]}" | awk -F"&" '{print $7}')
 
-  # Define o caminho completo da imagem
   image_path="$image_dir"
 
-  # Verifica se o arquivo de imagem existe
   if [[ -f "$image_path" ]]; then
     echo "Enviando requisição para $hostname/protocolo com a imagem $image_path"
     
-    # Executa o cURL com os campos separados e a imagem
     curl -k -X POST "$hostname/protocolo" \
+      -H "Authorization: Bearer $jwt_token" \       	  
       -F "NumeroProtocolo=${protocolo#*=}" \
       -F "NumeroVia=${via#*=}" \
       -F "Cpf=${cpf#*=}" \
@@ -58,5 +53,4 @@ done
 
 echo "Todas as requisições foram enviadas."
 
-# Manter a janela aberta
 read -p "Pressione ENTER para fechar."

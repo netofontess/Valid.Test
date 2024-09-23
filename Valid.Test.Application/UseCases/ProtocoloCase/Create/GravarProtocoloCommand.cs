@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace Valid.Test.Application.Commands
+namespace Valid.Test.Application.UseCases.ProtocoloCase.Create
 {
     public class GravarProtocoloCommand : IRequest
     {

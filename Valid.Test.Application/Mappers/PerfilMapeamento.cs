@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Valid.Test.Application.Amqp.MessageObjects;
-using Valid.Test.Application.Commands;
+using Valid.Test.Application.UseCases.ProtocoloCase.Create;
 using Valid.Test.Domain.Models;
 
 namespace Valid.Test.Application.Mappers

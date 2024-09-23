@@ -2,8 +2,11 @@
 using FluentValidation;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Valid.Test.Application.Amqp.Consumer;
 using Valid.Test.Application.Amqp.Publisher;
 using Valid.Test.Application.Behaviors;
@@ -32,6 +35,7 @@ namespace Valid.Test.IOC
             AddDependencyRepository(services);
             AddMediatRAndValidators(services);
             AddRabbitMq(services, configuration);
+            AddAuthentication(services, configuration);
 
             services.AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
@@ -91,6 +95,24 @@ namespace Valid.Test.IOC
                     });
                 });
             });
+        }
+        
+        public static void AddAuthentication(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = configuration["Jwt:Issuer"],
+                        ValidAudience = configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                    };
+                });
         }
     }
 }

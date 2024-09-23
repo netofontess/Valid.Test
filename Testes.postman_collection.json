@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "76cde431-5837-4951-a0c1-78cfd0d3b36b",
+		"name": "Testes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13439216"
+	},
+	"item": [
+		{
+			"name": "Valid",
+			"item": [
+				{
+					"name": "Adicionar protocolos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbkBhZG1pbiIsImp0aSI6ImQ2NjcxMWFkLThhODQtNDRhMy04ODNhLTFjNDNhNWU4ODQyYyIsImV4cCI6MTcyNzExODU2OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.pRDRKGjX5OFhHrqVPdgUMSB0AZVLdcFmb1DZvVsjNbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "NumeroProtocolo",
+									"value": "2345667456",
+									"type": "text"
+								},
+								{
+									"key": "NumeroVia",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "Cpf",
+									"value": "96079707974",
+									"type": "text"
+								},
+								{
+									"key": "Rg",
+									"value": "MG1234565",
+									"type": "text"
+								},
+								{
+									"key": "Nome",
+									"value": "João Silva",
+									"type": "text"
+								},
+								{
+									"key": "NomeMae",
+									"value": "Maria Silva",
+									"type": "text"
+								},
+								{
+									"key": "NomePai",
+									"value": "José Silva",
+									"type": "text"
+								},
+								{
+									"key": "Foto",
+									"type": "file",
+									"src": "postman-cloud:///1ef1dd2c-e097-4a40-bb60-a1190da4fe0d"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7076/protocolo",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7076",
+							"path": [
+								"protocolo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar protocolos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbkBhZG1pbiIsImp0aSI6IjI3Yjk3YWIyLThkYmUtNGI1NS05YTJlLTA1OTllNjQ2Y2EwMSIsImV4cCI6MTcyNzExODIyNCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.WISHHMrtIHb_Xk_CD4EeEYrMDcvscAkwbMG8aszF8b4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NumeroProtocolo\": \"10001\",\r\n    \"Cpf\": \"11111111111\",\r\n    \"Rg\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7076/protocolo",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7076",
+							"path": [
+								"protocolo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbkBhZG1pbiIsImp0aSI6IjRkNDJjODE2LTYyNTItNGMxYi1iZGI4LTJjNThmN2QyYjY0YiIsImV4cCI6MTcyNzExNjc4MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.0239IiAda6eajTZo9f9zMZCInSkORogfzac82nW38mQ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Email\": \"admin@admin\",\n    \"Password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7076/auth",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7076",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

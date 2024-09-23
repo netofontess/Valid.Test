@@ -3,11 +3,10 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Valid.Test.Application.Amqp.MessageObjects;
 using Valid.Test.Application.Amqp.Publisher;
-using Valid.Test.Application.Commands;
 using Valid.Test.Domain.Notification;
 using Valid.Test.UOW;
 
-namespace Valid.Test.Application.Handlers
+namespace Valid.Test.Application.UseCases.ProtocoloCase.Create
 {
     public class GravarProtocoloCommandHandler(ILogger<GravarProtocoloCommandHandler> logger,
                                          IUnitOfWork unitOfWork,
@@ -36,14 +35,14 @@ namespace Valid.Test.Application.Handlers
 
         private async Task<bool> Validate(GravarProtocoloCommand request)
         {
-            var protocoloExistente = await _unitOfWork.ProtocoloRepository.FindByNumeroProtocoloAsync(request.NumeroProtocolo);
+            var protocoloExistente = await _unitOfWork.ProtocoloRepository.ConsultaPorNumeroProtocoloAsync(request.NumeroProtocolo);
             if (protocoloExistente != null)
             {
                 _notificationContext.AddNotification("NumeroProtocolo", "Número de protocolo já existe.");
                 return false;
             }
 
-            var protocoloComCpfRgExistente = await _unitOfWork.ProtocoloRepository.FindByCpfRgAndNumeroViaAsync(request.Cpf, request.Rg, request.NumeroVia);
+            var protocoloComCpfRgExistente = await _unitOfWork.ProtocoloRepository.ConsultaPorCpfRgEhNumeroViaAsync(request.Cpf, request.Rg, request.NumeroVia);
             if (protocoloComCpfRgExistente != null)
             {
                 _notificationContext.AddNotification("CPF/RG/NumeroVia", "O CPF ou RG já possuem um protocolo com o mesmo número de via.");

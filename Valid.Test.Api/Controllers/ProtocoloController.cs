@@ -1,11 +1,15 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Valid.Test.Application.Commands;
+using Valid.Test.Application.UseCases.ProtocoloCase.Create;
+using Valid.Test.Application.UseCases.ProtocoloCase.Get;
+using Valid.Test.Domain.Helpers;
 
 namespace Valid.Test.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ProtocoloController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
@@ -18,10 +22,13 @@ namespace Valid.Test.Api.Controllers
             return Ok(gravarProtocoloCommand);
         }
 
-        [HttpGet("{numeroProtocolo}")]
-        public IActionResult ConsultaProtocolo(string numeroProtocolo)
+        [HttpGet("")]
+        public async Task<IActionResult> ConsultaProtocolo(FiltroProtocolo filtro)
         {
-            return Ok(numeroProtocolo);
+            var query = new ConsultaProtocoloQuery(filtro);
+            var resultado = await _mediator.Send(query);
+
+            return Ok(resultado);
         }
     }
 }
