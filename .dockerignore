@@ -1,0 +1,13 @@
+# Ignorar diretórios de testes
+**/tests/
+**/Test/
+**/*.Tests/
+**/*.Tests.csproj
+
+# Ignorar diretórios bin e obj
+bin/
+obj/
+*.user
+*.vs
+.vscode
+
