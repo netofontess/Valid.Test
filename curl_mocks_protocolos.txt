@@ -1,0 +1,20 @@
+
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10001" -F "NumeroVia=1" -F "Cpf=11111111111" -F "Rg=1234567" -F "Nome=João Silva" -F "NomeMae=Maria Silva" -F "NomePai=José Silva" -F "Foto=@/caminho/para/imagem1.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10002" -F "NumeroVia=1" -F "Cpf=22222222222" -F "Rg=2345678" -F "Nome=Ana Souza" -F "NomeMae=Clara Souza" -F "NomePai=Marcos Souza" -F "Foto=@/caminho/para/imagem2.jpg"
+
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10003" -F "NumeroVia=1" -F "Cpf=33333333333" -F "Rg=3456789" -F "Nome=Carlos Pereira" -F "NomeMae=Lucia Pereira" -F "NomePai=Pedro Pereira" -F "Foto=@/caminho/para/imagem3.jpg"
+
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10004" -F "NumeroVia=1" -F "Cpf=44444444444" -F "Rg=4567890" -F "Nome=Fernanda Lima" -F "NomeMae=Sonia Lima" -F "NomePai=Jorge Lima" -F "Foto=@/caminho/para/imagem4.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10005" -F "NumeroVia=1" -F "Cpf=55555555555" -F "Rg=5678901" -F "Nome=Marcos Alves" -F "NomeMae=Eliane Alves" -F "NomePai=Carlos Alves" -F "Foto=@/caminho/para/imagem5.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10006" -F "NumeroVia=1" -F "Cpf=66666666666" -F "Rg=6789012" -F "Nome=Patricia Ferreira" -F "NomeMae=Renata Ferreira" -F "NomePai=Claudio Ferreira" -F "Foto=@/caminho/para/imagem6.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10007" -F "NumeroVia=1" -F "Cpf=77777777777" -F "Rg=7890123" -F "Nome=Rafael Cardoso" -F "NomeMae=Luciana Cardoso" -F "NomePai=Julio Cardoso" -F "Foto=@/caminho/para/imagem7.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10008" -F "NumeroVia=1" -F "Cpf=88888888888" -F "Rg=8901234" -F "Nome=Juliana Ramos" -F "NomeMae=Rosa Ramos" -F "NomePai=Luis Ramos" -F "Foto=@/caminho/para/imagem8.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10009" -F "NumeroVia=1" -F "Cpf=99999999999" -F "Rg=9012345" -F "Nome=Thiago Silva" -F "NomeMae=Carla Silva" -F "NomePai=Marcelo Silva" -F "Foto=@/caminho/para/imagem9.jpg"
+				  
+curl -k -X POST "$https://localhost:7076/protocolo" -F "NumeroProtocolo=10010" -F "NumeroVia=1" -F "Cpf=00000000000" -F "Rg=0123456" -F "Nome=Paulo Oliveira" -F "NomeMae=Isabel Oliveira" -F "NomePai=Rodrigo Oliveira" -F "Foto=@/caminho/para/imagem10.jpg"

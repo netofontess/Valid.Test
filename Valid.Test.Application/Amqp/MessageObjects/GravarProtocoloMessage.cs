@@ -1,8 +1,6 @@
-﻿using Valid.Test.Domain.Models.Base;
-
-namespace Valid.Test.Domain.Models
+﻿namespace Valid.Test.Application.Amqp.MessageObjects
 {
-    public class Protocolo : Entity<Guid>
+    public class GravarProtocoloMessage
     {
         public string? NumeroProtocolo { get; set; }
         public int NumeroVia { get; set; }

@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valid.Test.Application", "V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valid.Test.IOC", "Valid.Test.IOC\Valid.Test.IOC.csproj", "{7F03128C-944A-4856-81F0-0689365AA69C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valid.Test.UOW", "Valid.Test.UOW\Valid.Test.UOW.csproj", "{BE6BBB36-6E65-4C5A-8904-AA77FD39DC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valid.Test.UOW", "Valid.Test.UOW\Valid.Test.UOW.csproj", "{BE6BBB36-6E65-4C5A-8904-AA77FD39DC8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

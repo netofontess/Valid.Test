@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Valid.Test.Application.Amqp.MessageObjects;
 using Valid.Test.Application.Commands;
 using Valid.Test.Domain.Models;
 
@@ -8,10 +9,11 @@ namespace Valid.Test.Application.Mappers
     public class PerfilMapeamento : Profile
     {
         public PerfilMapeamento()
-        {
-            CreateMap<Protocolo, GravarProtocoloCommand>();
-            CreateMap<GravarProtocoloCommand, Protocolo>()
+        {            
+            CreateMap<GravarProtocoloCommand, GravarProtocoloMessage>()
                 .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => ConvertIFormFileToByteArray(src.Foto)));
+
+            CreateMap<GravarProtocoloMessage, Protocolo>();
         }
 
         private static byte[]? ConvertIFormFileToByteArray(IFormFile? formFile)

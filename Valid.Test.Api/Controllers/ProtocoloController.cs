@@ -11,7 +11,7 @@ namespace Valid.Test.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromForm] GravarProtocoloCommand gravarProtocoloCommand)
+        public async Task<IActionResult> CriaProtocolo([FromForm] GravarProtocoloCommand gravarProtocoloCommand)
         {
             await _mediator.Send(gravarProtocoloCommand);
 
@@ -19,7 +19,7 @@ namespace Valid.Test.Api.Controllers
         }
 
         [HttpGet("{numeroProtocolo}")]
-        public IActionResult Get(string numeroProtocolo)
+        public IActionResult ConsultaProtocolo(string numeroProtocolo)
         {
             return Ok(numeroProtocolo);
         }

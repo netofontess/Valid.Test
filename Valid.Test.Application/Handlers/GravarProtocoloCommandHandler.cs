@@ -1,36 +1,25 @@
 ﻿using AutoMapper;
-using Azure.Core;
-using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
+using Valid.Test.Application.Amqp.MessageObjects;
+using Valid.Test.Application.Amqp.Publisher;
 using Valid.Test.Application.Commands;
-using Valid.Test.Domain.Models;
 using Valid.Test.Domain.Notification;
 using Valid.Test.UOW;
 
 namespace Valid.Test.Application.Handlers
 {
-    public class GravarProtocoloCommandHandler : IRequestHandler<GravarProtocoloCommand>
+    public class GravarProtocoloCommandHandler(ILogger<GravarProtocoloCommandHandler> logger,
+                                         IUnitOfWork unitOfWork,
+                                         IMapper mapper,
+                                         INotificationContext notificationContext,
+                                         IPublisherService publisherService) : IRequestHandler<GravarProtocoloCommand>
     {
-        private readonly ILogger<GravarProtocoloCommandHandler> _logger;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly INotificationContext _notificationContext;
-        private readonly IEnumerable<IValidator<GravarProtocoloCommand>> _validators;
-
-        public GravarProtocoloCommandHandler(ILogger<GravarProtocoloCommandHandler> logger,
-                                             IUnitOfWork unitOfWork,
-                                             IMapper mapper,
-                                             INotificationContext notificationContext,
-                                             IEnumerable<IValidator<GravarProtocoloCommand>> validators)
-        {
-            _logger = logger;
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-            _notificationContext = notificationContext;
-            _validators = validators;
-        }
+        private readonly ILogger<GravarProtocoloCommandHandler> _logger = logger;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly IMapper _mapper = mapper;
+        private readonly INotificationContext _notificationContext = notificationContext;
+        private readonly IPublisherService _publisherService = publisherService;
 
         public async Task Handle(GravarProtocoloCommand request, CancellationToken cancellationToken)
         {
@@ -40,10 +29,9 @@ namespace Valid.Test.Application.Handlers
             if (!isValid)
                 return;
 
-            var protocolo = _mapper.Map<Protocolo>(request);
+            var protocoloMessage = _mapper.Map<GravarProtocoloMessage>(request);
 
-            await _unitOfWork.ProtocoloRepository.Insert(protocolo);
-            await _unitOfWork.Commit();
+            await _publisherService.PublicarProtocoloAsync(protocoloMessage);
         }
 
         private async Task<bool> Validate(GravarProtocoloCommand request)
@@ -63,17 +51,6 @@ namespace Valid.Test.Application.Handlers
             }
 
             return true;
-        }
-        
-        
-        public async Task PublicarProtocolo(IEnumerable<GravarProtocoloCommand> protocolosDto)
-        {
-            _logger.LogInformation("PublicarProtocolo object: {ProtocoloDto}", protocolosDto);
-        }
-
-        public async Task ConsumirProtocolo(GravarProtocoloCommand protocoloDto)
-        {
-            _logger.LogInformation("ConsumirProtocolo object: {ProtocoloDto}", protocoloDto);
         }
     }
 }
