@@ -7,9 +7,10 @@ O banco de dados foi feito em SQL Server e contém as configurações de acesso 
 
 As configurações do RabbitMQ estão dentro do AppSettings.
 
-Para testes em massa, existe um script na raíz do projeto chamado 'script.sh' (em bash) que faz o cURL com 10 mocks de dados, ele irá solicitar o caminho do host e de uma imagem local para que possa ser feito o envio.
-Também dentro da raíz do projeto tem um arquivo chamado 'curl_mocks_protocolos.txt', onde contém os cURLs caso deseja importar via Postman (nacessário adicionar o token).
-
+Na raíz do projeto existem os arquivos: 
+- 'script.sh' - para testes em massa, que faz o cURL com 10 mocks de dados, ele irá solicitar o caminho do host e de uma imagem local para que possa ser feito o envio;
+- 'curl_mocks_protocolos.txt' - contém os cURLs caso deseja importar via Postman (nacessário adicionar o token);
+- Testes.postman_collection.json - collection do postman para auxiliar nas chamadas;
 
 ## Gerar token
 ```
