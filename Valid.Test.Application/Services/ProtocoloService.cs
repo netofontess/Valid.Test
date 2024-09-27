@@ -38,24 +38,5 @@ namespace Valid.Test.Application.Services
                 throw;
             }
         }
-
-        public async Task ConsultarProtocolo(GravarProtocoloMessage gravarProtocoloMessage)
-        {
-            try
-            {
-                var protocolo = _mapper.Map<Protocolo>(gravarProtocoloMessage);
-
-                _logger.LogInformation("Gravando protocolo no banco de dados: {Protocolo}", protocolo);
-
-                await _unitOfWork.ProtocoloRepository.Insert(protocolo);
-                await _unitOfWork.Commit();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao gravar protocolo: {Exception}", ex.Message);
-
-                throw;
-            }
-        }
     }
 }
